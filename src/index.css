@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivory-100 font-sans text-ink-900 antialiased leading-[1.5];
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display leading-[1.2];
+  }
+
+  ::selection {
+    background-color: theme('colors.gold.300');
+    color: theme('colors.ink.900');
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply font-sans text-xs font-semibold uppercase tracking-luxe text-gold-700;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500 px-7 py-3.5 text-sm font-semibold tracking-wide text-ink-900 shadow-[0_10px_30px_-12px_rgba(194,160,97,0.7)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-12px_rgba(194,160,97,0.85)] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-300 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900;
+  }
+
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ivory-100/60 px-7 py-3.5 text-sm font-semibold tracking-wide text-ivory-50 backdrop-blur-sm transition duration-300 hover:border-gold-300 hover:bg-ivory-50/10 hover:text-gold-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-300 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900;
+  }
+
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-900/25 px-6 py-3 text-sm font-semibold tracking-wide text-ink-900 transition duration-300 hover:border-gold-600 hover:bg-gold-100 hover:text-ink-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 focus-visible:ring-offset-ivory-100;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-beige-300 bg-ivory-50 px-4 py-3 text-sm text-ink-900 placeholder:text-ink-300 transition duration-200 focus:border-gold-600 focus:outline-none focus:ring-4 focus:ring-gold-200/70;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
